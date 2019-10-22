@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<package>
+  <metadata>
+    <!--*-->
+    <id>Easternsoft.CognitiveServices</id>
+    <!--*-->
+    <version>1.0.7235.1755</version>
+    <title>Easternsoft.CognitiveServices</title>
+    <!--*-->
+    <authors>Easternsoft</authors>
+    <owners>Easternsoft</owners>
+    <!--
+    <licenseUrl></licenseUrl>
+    <projectUrl></projectUrl>
+    <iconUrl></iconUrl>
+-->
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <!--*-->
+    <description>Easternsoft</description>
+    <!--*-->
+    <releaseNotes>Easternsoft</releaseNotes>
+    <copyright>Copyright ©  2019</copyright>
+    <tags>
+    </tags>
+    <dependencies>
+      <!--
+      <dependency id="SampleDependency" version="1.0" />
+-->
+    </dependencies>
+  </metadata>
+</package>
