@@ -71,18 +71,23 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="FaceModel.cs" />
-    <Compile Include="FaceRecognition.cs" />
+    <Compile Include="FaceRecognitionManager.cs" />
+    <Compile Include="FaceRecognitionModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="CLITools\face_detection.exe">
+    <None Include="face_recognition_models\models\dlib_face_recognition_resnet_model_v1.dat">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="CLITools\face_recognition.exe">
+    </None>
+    <None Include="face_recognition_models\models\mmod_human_face_detector.dat">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-  </ItemGroup>
-  <ItemGroup>
+    </None>
+    <None Include="face_recognition_models\models\shape_predictor_5_face_landmarks.dat">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="face_recognition_models\models\shape_predictor_68_face_landmarks.dat">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
