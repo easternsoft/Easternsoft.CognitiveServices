@@ -1,10 +1,15 @@
 ﻿using FaceRecognitionDotNet;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
+using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
+using System.Net;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
+using Image = FaceRecognitionDotNet.Image;
 
 namespace Easternsoft.CognitiveServices.Vision.Face
 {
@@ -58,6 +63,22 @@ namespace Easternsoft.CognitiveServices.Vision.Face
 			}
 
 			return lstModels;
+		}
+		public static List<FaceModel> LoadFromUrl(string imageUrl, FaceRecognition faceRecognition)
+		{
+			using (Image image = LoadImageUrl(imageUrl))
+			{
+				var encodingFaces = faceRecognition.FaceEncodings(image);
+				return Create(imageUrl, encodingFaces);
+			}
+		}
+
+		public static Image LoadImageUrl(string imageUrl)
+		{
+			WebClient client = new WebClient();
+			Stream stream = client.OpenRead(imageUrl);
+
+			return stream.ToFaceRecognitionImage();
 		}
 	}
 }
