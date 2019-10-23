@@ -12,6 +12,7 @@ namespace Easternsoft.CognitiveServices.Vision.Face
 	{
 		public string ImagePath { get; set; }
 		public string Name { get; set; }
+		public bool IsRecognized { get; set; }
 		public FaceEncoding Encoding { get; set; }
 		public FaceModel()
 		{

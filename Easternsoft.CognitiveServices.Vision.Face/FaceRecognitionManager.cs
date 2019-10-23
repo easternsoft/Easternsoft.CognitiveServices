@@ -35,9 +35,17 @@ namespace Easternsoft.CognitiveServices.Vision.Face
 			{
 				foreach (FaceModel unknowFaceModel in unknowFaceModels)
 				{
-					if (FaceRecognition.CompareFace(knownFaceModel.Encoding, unknowFaceModel.Encoding))
+					if (unknowFaceModel.IsRecognized == false)
 					{
-						unknowFaceModel.Name = knownFaceModel.Name;
+						if (FaceRecognition.CompareFace(knownFaceModel.Encoding, unknowFaceModel.Encoding, 0.6))
+						{
+							unknowFaceModel.Name = knownFaceModel.Name;
+							unknowFaceModel.IsRecognized = true;
+						}
+						else
+						{
+							unknowFaceModel.Name = "unknown";
+						}
 					}
 				}
 			}
