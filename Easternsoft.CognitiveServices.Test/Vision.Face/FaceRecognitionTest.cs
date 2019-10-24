@@ -31,11 +31,23 @@ namespace Easternsoft.CognitiveServices.Test.Vision.Face
 		public void GetFacesFromUrl_ShouldRunCorrectly()
 		{
 			FaceRecognitionManager faceRecognition = new FaceRecognitionManager();
-			var faces = faceRecognition.GetFacesFromUrl(_obamaImage, _twoPeopleImage);
+			var faces = faceRecognition.GetFaces(_obamaImage, _twoPeopleImage);
 
 			Assert.AreEqual(2, faces.Count);
 			Assert.AreEqual(true, faces[0].IsRecognized); // obama is recognized
 			Assert.AreEqual(false, faces[1].IsRecognized); // biden is not recognized
+		}
+
+		[Test]
+		public void GetFacesFromUrl_ShouldCahedCorrectly()
+		{
+			FaceRecognitionManager faceRecognition = new FaceRecognitionManager();
+			var faces = faceRecognition.GetFaces(_obamaImage, _twoPeopleImage);
+
+			var before = DateTime.Now;
+			var faces2 = faceRecognition.GetFaces(_obamaImage, _twoPeopleImage);
+			var duration = DateTime.Now - before;
+			Assert.Greater(4, duration.TotalSeconds);
 		}
 	}
 }

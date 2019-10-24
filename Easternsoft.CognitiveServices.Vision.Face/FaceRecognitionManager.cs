@@ -12,6 +12,8 @@ namespace Easternsoft.CognitiveServices.Vision.Face
 {
 	public class FaceRecognitionManager
 	{
+		public static FaceRecognitionManager Current = new FaceRecognitionManager();
+
 		private FaceRecognition _faceRecognition;
 		public  FaceRecognition FaceRecognition
 		{
@@ -31,19 +33,10 @@ namespace Easternsoft.CognitiveServices.Vision.Face
 			FaceRecognition.InternalEncoding = System.Text.Encoding.GetEncoding("utf-8");
 		}
 
-		public List<FaceModel> GetFaces(string knownFaceFolder, string unknownFaceFolder)
+		public List<FaceModel> GetFaces(string knownFacePath, string unknownFacePath)
 		{
-			var knownFaceModels = FaceModel.LoadFromFolder(knownFaceFolder, FaceRecognition);
-			var unknowFaceModels = FaceModel.LoadFromFolder(unknownFaceFolder, FaceRecognition);
-
-			RecogniteUnknownFaceModels(knownFaceModels, unknowFaceModels);
-			return unknowFaceModels;
-		}
-
-		public List<FaceModel> GetFacesFromUrl(string knownFaceUrl, string unknownFaceUrl)
-		{
-			var knownFaceModels = FaceModel.LoadFromUrl(knownFaceUrl, FaceRecognition);
-			var unknowFaceModels = FaceModel.LoadFromUrl(unknownFaceUrl, FaceRecognition);
+			var knownFaceModels = FaceModel.Load(knownFacePath, FaceRecognition);
+			var unknowFaceModels = FaceModel.Load(unknownFacePath, FaceRecognition);
 
 			RecogniteUnknownFaceModels(knownFaceModels, unknowFaceModels);
 			return unknowFaceModels;
