@@ -15,12 +15,17 @@ namespace Easternsoft.CognitiveServices.Test.Vision.Face
 		private string _unknownPeopleFolder = @"Vision.Face\Data\UnknownPeople";
 		private string _obamaImage = "https://i.imgur.com/VLhPcj5.png";
 		private string _twoPeopleImage = "https://i.imgur.com/sddIYpq.png";
+        private FaceRecognitionManager _faceRecognitionManager;
 
-		[Test]
+        public FaceRecognitionTest()
+        {
+            _faceRecognitionManager = FaceRecognitionManager.Current;
+        }
+
+        [Test]
 		public void GetFaces_ShouldRunCorrectly()
 		{
-			FaceRecognitionManager faceRecognition = new FaceRecognitionManager();
-			var faces = faceRecognition.GetFaces(_knownPeopleFolder, _unknownPeopleFolder);
+			var faces = _faceRecognitionManager.GetFaces(_knownPeopleFolder, _unknownPeopleFolder);
 
 			Assert.AreEqual(2, faces.Count);
 			Assert.AreEqual("biden", faces[0].Name);
@@ -30,8 +35,7 @@ namespace Easternsoft.CognitiveServices.Test.Vision.Face
 		[Test]
 		public void GetFacesFromUrl_ShouldRunCorrectly()
 		{
-			FaceRecognitionManager faceRecognition = new FaceRecognitionManager();
-			var faces = faceRecognition.GetFaces(_obamaImage, _twoPeopleImage);
+			var faces = _faceRecognitionManager.GetFaces(_obamaImage, _twoPeopleImage);
 
 			Assert.AreEqual(2, faces.Count);
 			Assert.AreEqual(true, faces[0].IsRecognized); // obama is recognized
@@ -41,13 +45,12 @@ namespace Easternsoft.CognitiveServices.Test.Vision.Face
 		[Test]
 		public void GetFacesFromUrl_ShouldCahedCorrectly()
 		{
-			FaceRecognitionManager faceRecognition = new FaceRecognitionManager();
-			var faces = faceRecognition.GetFaces(_obamaImage, _twoPeopleImage);
+			var faces = _faceRecognitionManager.GetFaces(_obamaImage, _twoPeopleImage);
 
-			var before = DateTime.Now;
-			var faces2 = faceRecognition.GetFaces(_obamaImage, _twoPeopleImage);
-			var duration = DateTime.Now - before;
-			Assert.Greater(4, duration.TotalSeconds);
-		}
+            var before = DateTime.Now;
+            var faces2 = _faceRecognitionManager.GetFaces(_obamaImage, _twoPeopleImage);
+            var duration = DateTime.Now - before;
+            Assert.Greater(4, duration.TotalSeconds);
+        }
 	}
 }
