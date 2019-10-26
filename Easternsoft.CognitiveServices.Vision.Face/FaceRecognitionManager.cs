@@ -15,7 +15,7 @@ namespace Easternsoft.CognitiveServices.Vision.Face
 		public static FaceRecognitionManager Current = new FaceRecognitionManager();
 
 		private FaceRecognition _faceRecognition;
-		private double _tolerance = 0.8;
+		private double _tolerance = 0.3;
 
 		public FaceRecognition FaceRecognition
 		{
