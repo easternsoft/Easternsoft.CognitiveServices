@@ -64,6 +64,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="build\Easternsoft.CognitiveServices.props">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="package.nuspec" />
   </ItemGroup>
   <ItemGroup>
@@ -72,5 +75,6 @@
       <Name>Easternsoft.CognitiveServices.Vision.Face</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

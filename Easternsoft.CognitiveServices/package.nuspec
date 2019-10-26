@@ -4,7 +4,7 @@
     <!--*-->
     <id>Easternsoft.CognitiveServices</id>
     <!--*-->
-    <version>1.0.7235.1755</version>
+    <version>1.0.7238.26301</version>
     <title>Easternsoft.CognitiveServices</title>
     <!--*-->
     <authors>Easternsoft</authors>
@@ -28,4 +28,8 @@
 -->
     </dependencies>
   </metadata>
+  <files>
+    <file src="build\Easternsoft.CognitiveServices.props" target="build\Easternsoft.CognitiveServices.props" />
+    <file src="bin\*\face_recognition_models\models\*" target="face_recognition_models\models" />
+  </files>
 </package>

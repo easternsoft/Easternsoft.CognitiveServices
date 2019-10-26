@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project version="4.0">
+
+	<Target Name="DebugMessage" AfterTargets="Build" >
+		<Message Text="Easternsoft.CognitiveServices.props" Importance="high"/>
+		<Message Text="MSBuildThisFileDirectory: $(MSBuildThisFileDirectory)" Importance="high"/>
+	</Target>
+	
+	<ItemGroup>
+		<None Include="$(MSBuildThisFileDirectory)..\face_recognition_models\models\*">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+			<Link>face_recognition_models\models\%(Filename)%(Extension)</Link>
+		</None>
+	</ItemGroup>
+</Project>
