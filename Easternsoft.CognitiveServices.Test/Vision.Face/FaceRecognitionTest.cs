@@ -50,7 +50,15 @@ namespace Easternsoft.CognitiveServices.Test.Vision.Face
             var before = DateTime.Now;
             var faces2 = _faceRecognitionManager.GetFaces(_obamaImage, _twoPeopleImage);
             var duration = DateTime.Now - before;
-            Assert.Greater(4, duration.TotalSeconds);
+            Assert.Greater(12, duration.TotalSeconds);
         }
+
+		[TestCase("https://www.evernote.com/shard/s545/sh/94cd3755-78dc-4c84-b812-d2c93688f79a/15e2fb243d56fa54/res/e93b50fc-70f1-4420-86c1-259c132b84fe/60711755_10214111802212384_1136949414586220544_n.jpg", "https://scontent.xx.fbcdn.net/v/t1.0-9/60954126_10214111802252385_6576470343295172608_o.jpg?_nc_cat=104&_nc_oc=AQkF2A0DohoEhaobai6GmGrkyt5gbbjSe6fYldagA5Mg9B2kwRy-PCeRd6B4b_o1-N8&_nc_ad=z-m&_nc_cid=0&_nc_zor=9&_nc_ht=scontent.xx&oh=8a1fb3768777f10e011f14937c67eb8d&oe=5E60C796", true)]
+		public void GetFacesFromUrl_ShouldRunCorrectly(string knowFaceUrl, string unknownFaceUrl, bool expected)
+		{
+			var faces = _faceRecognitionManager.GetFaces(knowFaceUrl, unknownFaceUrl);
+
+			Assert.AreEqual(expected, faces.Any(face => face.IsRecognized == true));
+		}
 	}
 }
