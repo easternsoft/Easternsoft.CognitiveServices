@@ -21,13 +21,15 @@ namespace Easternsoft.CognitiveServices.Vision.Face
 			try
 			{
 				bmpdata = bitmap.LockBits(new Rectangle(0, 0, bitmap.Width, bitmap.Height), ImageLockMode.ReadOnly, bitmap.PixelFormat);
-				int numbytes = bmpdata.Stride * bitmap.Height;
+				//int numbytes = bmpdata.Stride * bitmap.Height;
+				var elementSize = 3;
+				int numbytes = bmpdata.Width * bitmap.Height * elementSize;
 				byte[] bytedata = new byte[numbytes];
 				IntPtr ptr = bmpdata.Scan0;
 
 				Marshal.Copy(ptr, bytedata, 0, numbytes);
 
-				return FaceRecognition.LoadImage(bytedata, bitmap.Height, bitmap.Width, 3);
+				return FaceRecognition.LoadImage(bytedata, bitmap.Height, bitmap.Width, elementSize);
 			}
 			finally
 			{

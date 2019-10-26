@@ -55,6 +55,7 @@
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="FaceRecognitionDotNet, Version=1.2.3.10, Culture=neutral, PublicKeyToken=null" />
     <Reference Include="nunit.framework, Version=3.12.0.0, Culture=neutral, PublicKeyToken=2638cd05610744eb, processorArchitecture=MSIL">
       <HintPath>..\packages\NUnit.3.12.0\lib\net45\nunit.framework.dll</HintPath>
     </Reference>
@@ -71,16 +72,11 @@
     <Compile Include="BaseTest.cs" />
     <Compile Include="GlobalSetup.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Vision.Face\FaceEncodingManagerTest.cs" />
     <Compile Include="Vision.Face\FaceRecognitionTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Easternsoft.CognitiveServices.Vision.Face\Easternsoft.CognitiveServices.Vision.Face.csproj">
-      <Project>{615EE065-322E-4A76-83DF-84BDD3AE808E}</Project>
-      <Name>Easternsoft.CognitiveServices.Vision.Face</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Vision.Face\Data\KnownPeople\biden.jpg">
@@ -93,7 +89,12 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\Easternsoft.CognitiveServices.Vision.Face\Easternsoft.CognitiveServices.Vision.Face.csproj">
+      <Project>{615ee065-322e-4a76-83df-84bdd3ae808e}</Project>
+      <Name>Easternsoft.CognitiveServices.Vision.Face</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
