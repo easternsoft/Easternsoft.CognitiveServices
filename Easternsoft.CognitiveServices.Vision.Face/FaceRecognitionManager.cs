@@ -15,7 +15,9 @@ namespace Easternsoft.CognitiveServices.Vision.Face
 		public static FaceRecognitionManager Current = new FaceRecognitionManager();
 
 		private FaceRecognition _faceRecognition;
-		public  FaceRecognition FaceRecognition
+		private double _tolerance = 0.8;
+
+		public FaceRecognition FaceRecognition
 		{
 			get 
 			{
@@ -56,7 +58,7 @@ namespace Easternsoft.CognitiveServices.Vision.Face
 		{
 			if (unknowFaceModel.IsRecognized == false)
 			{
-				if (FaceRecognition.CompareFace(knownFaceModel.Encoding, unknowFaceModel.Encoding))
+				if (FaceRecognition.CompareFace(knownFaceModel.Encoding, unknowFaceModel.Encoding, _tolerance))
 				{
 					unknowFaceModel.Name = knownFaceModel.Name;
 					unknowFaceModel.IsRecognized = true;
